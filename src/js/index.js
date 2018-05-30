@@ -2,12 +2,12 @@ import sample from './sample';
 import '../css/sample.css';
 
 const CLASENAME = 'timestamp_image';
-console.log("bbbb");
+console.log('bbbb');
 class Index {
     constructor(imageDom) {
         //this.imageDom = imageDom;
         //this.src = this.imageDom.src;
- console.log("aaa");
+        console.log('aaa');
         this.setEvent();
     }
 
