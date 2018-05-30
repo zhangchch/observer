@@ -1,0 +1,11 @@
+.title {
+  text-align: center;
+  font-size: 15px;
+}
+
+.content {
+  .content-text {
+    color: #d22e6f;
+    font-size: 40px;
+  }
+}
