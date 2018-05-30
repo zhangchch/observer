@@ -7,7 +7,7 @@ class Index {
     constructor(imageDom) {
         //this.imageDom = imageDom;
         //this.src = this.imageDom.src;
-console.log("aaa");
+ console.log("aaa");
         this.setEvent();
     }
 
