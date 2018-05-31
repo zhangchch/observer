@@ -1,18 +1,22 @@
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var glob = require('glob');
+
+var entryObj = {};
+glob.sync("src/js/**/!(_)*.js").forEach(function (filePath) {
+    var filename = filePath.match(/(.*)\/(.*)\.js/)[2];
+    entryObj[filename] = __dirname + '/' + filePath;
+});
 
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
 
-    entry: {
-        'index':__dirname +'/src/js/index.js',
-        'main':__dirname +'/src/js/sample.js'
-    },
+    entry: entryObj,
     output: {
         publicPath: '/dist/',
         path: __dirname + '/dist',
-        filename: '[name].js'
+        filename: '[name]/[name].js'
     },
 
     devServer: {

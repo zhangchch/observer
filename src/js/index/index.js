@@ -1,5 +1,5 @@
-import sample from './sample';
-import '../css/sample.css';
+import sample from './_sample';
+import '../../css/index/sample.css';
 
 const CLASENAME = 'timestamp_image';
 console.log('bbbb');
