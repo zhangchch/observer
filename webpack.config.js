@@ -5,11 +5,14 @@ module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
 
-    entry: __dirname +'/src/js/index.js',
+    entry: {
+        'index':__dirname +'/src/js/index.js',
+        'main':__dirname +'/src/js/sample.js'
+    },
     output: {
         publicPath: '/dist/',
         path: __dirname + '/dist',
-        filename: 'index.js'
+        filename: '[name].js'
     },
 
     devServer: {
