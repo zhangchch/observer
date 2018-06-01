@@ -10,6 +10,7 @@ $blackColor: #000;
 
 .content {
     .content-text {
+        display: flex;
         color: var(--black-color);
         color: $blackColor;
         font-size: 40px;
