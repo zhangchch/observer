@@ -1,0 +1,2 @@
+import './course-list.tag'
+

@@ -1,22 +1,22 @@
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-var glob = require('glob');
+//var glob = require('glob');
 
-var entryObj = {};
-glob.sync("src/js/**/!(_)*.js").forEach(function (filePath) {
-    var filename = filePath.match(/(.*)\/(.*)\.js/)[2];
-    entryObj[filename] = __dirname + '/' + filePath;
-});
+//var entryObj = {};
+//glob.sync("src/js/**/!(_)*.js").forEach(function (filePath) {
+//    var filename = filePath.match(/(.*)\/(.*)\.js/)[2];
+//    entryObj[filename] = __dirname + '/' + filePath;
+//});
 
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
 
-    entry: entryObj,
+    entry: './src/index.js',
     output: {
         publicPath: '/dist/',
         path: __dirname + '/dist',
-        filename: '[name]/[name].js'
+        filename: 'index.js'
     },
 
     devServer: {
@@ -31,6 +31,16 @@ module.exports = {
                 enforce: 'pre',
                 test: /\.js$/,
                 loader: 'eslint-loader',
+                exclude: /node_module/
+            },
+            {
+                test: /\.tag$/,
+                use: {
+                    loader: 'riot-tag-loader',
+                    options: {
+                        hot: true
+                    }
+                },
                 exclude: /node_module/
             },
             {

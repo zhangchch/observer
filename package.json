@@ -1,5 +1,5 @@
 {
-  "name": "build_webpack",
+  "name": "observerdemo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
       "git add"
     ]
   },
-  "author": "",
+  "author": "zhang",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -37,6 +37,10 @@
     "postcss-nested": "^3.0.0",
     "postcss-simple-vars": "^4.1.0",
     "prettier": "^1.13.2",
+    "riot-compiler": "^3.5.1",
+    "riot-hot-reload": "^1.0.0",
+    "riot-tag-loader": "^2.1.0",
+    "riotjs-loader": "^4.0.0",
     "style-loader": "^0.21.0",
     "stylelint": "^9.2.1",
     "stylelint-config-standard": "^18.2.0",
@@ -44,5 +48,8 @@
     "webpack": "^4.10.0",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "riot": "^3.10.2"
   }
 }

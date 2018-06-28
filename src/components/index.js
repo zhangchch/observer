@@ -1,0 +1,5 @@
+import './course-list/index'
+import './students-list/index'
+import './course-item/index'
+import './students-item/index'
+import './modal/index'
