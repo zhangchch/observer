@@ -19,6 +19,7 @@ class Subject {
         this.name = subjectName;
         this.observers = new ObserverList();
     }
+
     add(observer) {
         this.observers.addObserver(observer);
     }
@@ -28,7 +29,8 @@ class Subject {
     }
 
     notify() {
-
+        let message = 'message come from ' + this.name;
+        return message;
     }
 }
 

@@ -32,10 +32,11 @@
 
     <script>
         this.on('before-mount', () => {
-            console.log(this.opts);
             // mixin action
             this.mixin('action');
         })
+
+        // add student event
         this.addStudent = () => {
             this.action.trigger('openModal', 'addStudent');
         }

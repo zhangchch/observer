@@ -35,6 +35,8 @@
             // mixin action
             this.mixin('action');
         })
+
+        // add course event
         this.addCourse = () => {
             this.action.trigger('openModal', 'addCourse');
         }

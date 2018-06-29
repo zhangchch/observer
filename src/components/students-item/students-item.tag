@@ -13,6 +13,10 @@
             <div each="{ course, i in studentCourseData }" onclick="{ unsubscribe.bind(this, opts.studentData, course) }">{ course.name }</div>
         </div>
     </virtual>
+    <virtual if="{ message.length > 0 }">
+        <div each="{ item, i in message }">{ item }</div>
+    </virtual>
+
 
     <style scoped>
         :scope {
@@ -65,17 +69,26 @@
     </style>
 
     <script>
-        import Subject from '../../modules/Subject'
-        import Observer from '../../modules/Observer'
-
+        // control accordion flag
         this.openFlag = false;
+        // store push message
+        this.message = [];
 
         this.on('before-mount', () => {
             // mixin action
             this.mixin('action');
 
+            // set studentName and studentCourseData
             this.studentName = this.opts.studentData.name;
             this.studentCourseData = this.opts.studentData.subjects;
+
+            // listen publish event
+            this.action.on('publish', (student, message) => {
+                if(student.name === this.studentName) {
+                    this.message.push(message);
+                }
+                this.update();
+            })
         })
 
         // student subscribe
@@ -97,7 +110,7 @@
             //this.action.trigger('unsubscribe', student, course);
         }
 
-        //
+        // toggle accordion flag
         this.selectCourse = () => {
             this.openFlag = true;
         }

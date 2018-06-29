@@ -29,7 +29,35 @@
             // mixin action
             this.mixin('action');
 
+            // init data
+            this.init();
+
+            // sum of course and student
+            this.courseSum = this.courseList.length;
+            this.studentSum = this.studentsList.length;
+
+
+            // listen add course event
+            this.action.on('addCourse', (category) => {
+                this.courseList.push(new Subject(category));
+                this.courseSum = this.courseList.length;
+                this.studentSum = this.studentsList.length;
+                this.update();
+            })
+
+            // listen add student event
+            this.action.on('addStudent', (category) => {
+                this.studentsList.push(new Observer(category));
+                this.courseSum = this.courseList.length;
+                this.studentSum = this.studentsList.length;
+                this.update();
+            })
+        })
+
+        // init data
+        this.init = () => {
             this.courseList = [new Subject('html'), new Subject('css'), new Subject('javascript')];
+
             let student1 = new Observer('lucy');
             student1.subscribe(this.courseList[0]).subscribe(this.courseList[1]);
 
@@ -40,29 +68,7 @@
             student3.subscribe(this.courseList[2]);
 
             this.studentsList = [student1, student2, student3];
-
-            this.courseSum = this.courseList.length;
-            this.studentSum = this.studentsList.length;
-
-            this.action.on('unsubscribe', (student, course) => {
-                this.unsubscribe(student, course);
-            })
-
-            this.action.on('addCourse', (category) => {
-                this.courseList.push(new Subject(category));
-                this.courseSum = this.courseList.length;
-                this.studentSum = this.studentsList.length;
-                console.log(this.courseList);
-                this.update();
-            })
-
-            this.action.on('addStudent', (category) => {
-                this.studentsList.push(new Observer(category));
-                this.courseSum = this.courseList.length;
-                this.studentSum = this.studentsList.length;
-                this.update();
-            })
-        })
+        }
 
         // @TODO riotjs act like not work when deep compare
         // @TODO can not update object deeply
